@@ -1,0 +1,37 @@
+<header #headerRef class="header">
+  <div class="left-section">
+    <nav class="nav-links">
+      <img src="assets/logo.svg" class="logo" />
+      <ng-container *ngFor="let item of navItems">
+        <div
+          class="nav-item"
+          [class.active]="isDropdownOpen(item.name)"
+          (click)="toggleDropdown(item.name)"
+        >
+          <app-info-box
+            [heading]="item.name"
+            (action)="onInfoAction(item.name)"
+          ></app-info-box>
+
+          <app-mega-dropdown
+            *ngIf="item.megaMenu && activeDropdown !== null"
+            [columns]="item.megaMenu.columns"
+            [isOpen]="isDropdownOpen(item.name)"
+            (itemSelected)="onMegaItemClick($event)"
+          ></app-mega-dropdown>
+        </div>
+      </ng-container>
+    </nav>
+  </div>
+
+  <div class="right-section">
+    <ng-container *ngFor="let link of rightLinks">
+      <a routerLink="/" class="right-link">{{ link }}</a>
+    </ng-container>
+    <span class="cart-icon">🛒</span>
+  </div>
+  <!-- 
+  <app-info-box heading="Welcome!" (action)="onInfoAction()">
+    <p>Create a site tailored for your brand.</p>
+  </app-info-box> -->
+</header>

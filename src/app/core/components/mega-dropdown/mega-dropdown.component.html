@@ -1,0 +1,16 @@
+<!-- mega-dropdown.component.html -->
+<div class="mega-dropdown" *ngIf="isOpen">
+  <div class="mega-content">
+    <div class="columns">
+      <div class="column" *ngFor="let col of columns">
+        <h4>{{ col.title }}</h4>
+        <ul>
+          <li *ngFor="let link of col.items" (click)="onItemClick(link.label)">
+            <span class="material-icons icon">{{ link.icon }}</span>
+            {{ link.label }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
