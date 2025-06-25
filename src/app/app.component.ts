@@ -4,10 +4,11 @@ import { HeaderComponent } from './core/header/header.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,HeaderComponent],
+  imports: [HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'codebond';
 }
+// RouterOutlet

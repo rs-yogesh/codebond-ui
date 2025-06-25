@@ -1,18 +1,13 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { InfoBoxComponent } from '../components/info-box/info-box.component';
 import { MegaDropdownComponent } from '../components/mega-dropdown/mega-dropdown.component';
+import { NavButtonComponent } from "../components/nav-button/nav-button.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    InfoBoxComponent,
-    MegaDropdownComponent,
-  ],
+  imports: [CommonModule, RouterModule, MegaDropdownComponent, NavButtonComponent],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -36,12 +31,10 @@ export class HeaderComponent {
   }
 
   onMegaItemClick(label: string): void {
-    console.log('Mega menu item clicked:', label);
     this.activeDropdown = null;
   }
 
   onInfoAction(itemName: string) {
-    // console.log('Clicked on:', itemName);
     this.toggleDropdown(itemName); // Optionally toggle dropdown on icon click
   }
 
@@ -66,7 +59,19 @@ export class HeaderComponent {
               { label: 'Discount Domain Club', icon: 'local_offer' },
             ],
           },
+          {
+            title: 'Domain Tools and Services',
+            items: [
+              { label: 'Generate Domain Names', icon: 'construction' },
+              { label: 'Find a Domain Owner (WHOIS)', icon: 'language' },
+              { label: 'Domain Broker Service', icon: 'person' },
+            ],
+          },
         ],
+        image: {
+          src: 'assets/domain-favorite.png',
+          caption: 'View Domain Favorites',
+        },
       },
     },
     { name: 'Websites and Hosting' },

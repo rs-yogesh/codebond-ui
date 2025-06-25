@@ -14,6 +14,7 @@ export class MegaDropdownComponent {
     items: { label: string; icon: string }[];
   }[] = [];
   @Input() isOpen = false;
+  @Input() image?: { src: string; caption: string };
   @Output() itemSelected = new EventEmitter<string>();
 
   onItemClick(label: string): void {

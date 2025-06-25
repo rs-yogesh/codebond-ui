@@ -1,25 +1,27 @@
 <header #headerRef class="header">
   <div class="left-section">
     <nav class="nav-links">
-      <img src="assets/logo.svg" class="logo" />
+      <img src="assets/codeBond.svg" class="logo" alt="CodeBond" />
       <ng-container *ngFor="let item of navItems">
         <div
           class="nav-item"
           [class.active]="isDropdownOpen(item.name)"
           (click)="toggleDropdown(item.name)"
         >
-          <app-info-box
-            [heading]="item.name"
-            (action)="onInfoAction(item.name)"
-          ></app-info-box>
-
-          <app-mega-dropdown
-            *ngIf="item.megaMenu && activeDropdown !== null"
-            [columns]="item.megaMenu.columns"
-            [isOpen]="isDropdownOpen(item.name)"
-            (itemSelected)="onMegaItemClick($event)"
-          ></app-mega-dropdown>
+          <app-nav-button
+            [label]="item.name"
+            [active]="isDropdownOpen(item.name)"
+            (action)="toggleDropdown(item.name)"
+          ></app-nav-button>
         </div>
+
+        <app-mega-dropdown
+          *ngIf="item.megaMenu && isDropdownOpen(item.name)"
+          [columns]="item.megaMenu.columns"
+          [image]="item.megaMenu.image"
+          [isOpen]="true"
+          (itemSelected)="onMegaItemClick($event)"
+        ></app-mega-dropdown>
       </ng-container>
     </nav>
   </div>
@@ -30,8 +32,4 @@
     </ng-container>
     <span class="cart-icon">🛒</span>
   </div>
-  <!-- 
-  <app-info-box heading="Welcome!" (action)="onInfoAction()">
-    <p>Create a site tailored for your brand.</p>
-  </app-info-box> -->
 </header>

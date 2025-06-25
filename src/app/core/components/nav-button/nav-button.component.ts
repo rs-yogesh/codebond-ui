@@ -2,17 +2,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-info-box',
+  selector: 'app-nav-button',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './info-box.component.html',
-  styleUrls: ['./info-box.component.scss']
+  templateUrl: './nav-button.component.html',
+  styleUrls: ['./nav-button.component.scss'],
 })
-export class InfoBoxComponent {
-  @Input() heading = '';
+export class NavButtonComponent {
+  @Input() label: string = '';
+  @Input() active = false;
   @Output() action = new EventEmitter<void>();
-
-  onActionClick() {
-    this.action.emit();
-  }
 }
